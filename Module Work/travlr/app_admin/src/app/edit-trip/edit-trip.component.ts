@@ -69,6 +69,29 @@ export class EditTripComponent implements OnInit {
     })
   }
 
+  public onDelete() {
+    let tripCode = localStorage.getItem("tripCode");
+    if(!tripCode) {
+      alert("Something wrong, couldn't find where I stashed tripCode!");
+      this.router.navigate(['']);
+      return;
+    }
+
+    console.log('EditTripComponent::onDelete');
+    console.log('tripCode:' + tripCode);
+
+    this.tripDataService.deleteTrip(tripCode)
+    .subscribe({
+      next: (value: any) => {
+        console.log(value);
+        this.router.navigate(['']);
+      },
+      error: (error: any) => {
+        console.log('Error: ' + error);
+      }
+    })
+  }
+
   public onSubmit() {
     this.submitted = true;
     

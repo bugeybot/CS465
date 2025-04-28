@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/assets/images/logo.png" alt="Logo" style="height: 40px;">
+      </a>
+  
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav me-auto">
+          <a 
+            routerLink="/listtrips"
+            routerLinkActive="fw-bold"
+            class="nav-link"
+          >
+            Trips
+          </a>
+        </div>
+  
+        <div class="d-flex align-items-center">
+          <a 
+            *ngIf="!isLoggedIn()" 
+            routerLink="/login" 
+            class="nav-link"
+          >
+            Login
+          </a>
+  
+          <a 
+            *ngIf="isLoggedIn()" 
+            (click)="onLogout()" 
+            role="button"
+            class="nav-link"
+            style="cursor: pointer;"
+          >
+            Log Out
+          </a>
+        </div>
+      </div>
+    </div>
+</nav>
